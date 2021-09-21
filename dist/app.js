@@ -7,3 +7,4 @@ function clickHandler(message) {
 if (button) {
     button.addEventListener('click', clickHandler.bind(null, 'This will not throw the TS error'));
 }
+//# sourceMappingURL=app.js.map
