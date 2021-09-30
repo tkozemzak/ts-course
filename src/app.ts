@@ -1,13 +1,33 @@
-const button = document.querySelector('button');
+class Department {
+	private employees: string[] = [];
 
-function clickHandler(message: string) {
-	let userName = 'User';
-	console.log('Clicked' + message);
+	constructor(private readonly id: string, public name: string) {
+		this.name = name;
+	}
+	describe() {
+		console.log(`Department (${this.id}): ${this.name}`);
+	}
+	addEmployee(employee: string) {
+		this.employees.push(employee);
+	}
+	printEmployeeInformation() {
+		console.log(this.employees.length);
+		console.log(this.employees);
+	}
 }
 
-if (button) {
-	button.addEventListener(
-		'click',
-		clickHandler.bind(null, 'This will not throw the TS error')
-	);
+class ITDepartment extends Department {
+	constructor(id: string, public admins: string[]) {
+		super(id, 'IT');
+	}
 }
+
+const accounting = new ITDepartment('d1', ['Tim']);
+
+// console.log(accounting.describe());
+
+accounting.addEmployee('Tim');
+accounting.addEmployee('Max');
+
+accounting.describe();
+accounting.printEmployeeInformation();
